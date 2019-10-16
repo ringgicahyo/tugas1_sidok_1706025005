@@ -47,8 +47,6 @@ public class DokterModel {
     private Integer jenis_kelamin;
 
     //@ManyToMany(mappedBy = "listDokter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-
-
     public Long getId() {
         return id;
     }
