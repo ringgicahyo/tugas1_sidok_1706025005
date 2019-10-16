@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="dokter")
-public class DokterModel {
+public class DokterModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,7 +46,9 @@ public class DokterModel {
     @Column(name = "jenis_kelamin", nullable = false)
     private Integer jenis_kelamin;
 
-    //@ManyToMany(mappedBy = "listDokter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @ManyToMany(mappedBy = "listDokter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private List<SpesialisasiModel> listSpesialisasi;
+
     public Long getId() {
         return id;
     }
