@@ -18,7 +18,7 @@ public class DokterModel implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "nama", nullable = false, columnDefinition = "VARCHAR(255)")
     private String nama;
 
@@ -33,12 +33,12 @@ public class DokterModel implements Serializable {
     private String nik;
 
     @NotNull
-    @DateTimeFormat(pattern = "dd.MM.yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "tanggal_lahir", nullable = false)
     private Date tanggal_lahir;
 
     @NotNull
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "tempat_lahir", nullable = false, columnDefinition = "VARCHAR(255)")
     private String tempat_lahir;
 
@@ -46,8 +46,19 @@ public class DokterModel implements Serializable {
     @Column(name = "jenis_kelamin", nullable = false)
     private Integer jenis_kelamin;
 
-//    @ManyToMany(mappedBy = "listDokter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<SpesialisasiModel> listSpesialisasi;
+    @OneToMany(mappedBy = "dokter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SpesialisasiDokterModel> listSpesialisasiDokter;
+
+    @OneToMany(mappedBy = "dokter", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<JadwalJagaModel> listJadwalJaga;
+
+    public List<SpesialisasiDokterModel> getListSpesialisasiDokter() {
+        return listSpesialisasiDokter;
+    }
+
+    public void setListSpesialisasiDokter(List<SpesialisasiDokterModel> listSpesialisasiDokter) {
+        this.listSpesialisasiDokter = listSpesialisasiDokter;
+    }
 
     public Long getId() {
         return id;
@@ -71,6 +82,14 @@ public class DokterModel implements Serializable {
 
     public void setNip(String nip) {
         this.nip = nip;
+    }
+
+    public List<JadwalJagaModel> getListJadwalJaga() {
+        return listJadwalJaga;
+    }
+
+    public void setListJadwalJaga(List<JadwalJagaModel> listJadwalJaga) {
+        this.listJadwalJaga = listJadwalJaga;
     }
 
     public String getNik() {

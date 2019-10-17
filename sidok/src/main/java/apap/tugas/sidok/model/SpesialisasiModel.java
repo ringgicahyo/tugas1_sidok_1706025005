@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "spesialisasi")
@@ -22,6 +23,8 @@ public class SpesialisasiModel implements Serializable {
     @Column(name = "gelar", nullable = false, columnDefinition = "VARCHAR(255)")
     private String gelar;
 
+    @OneToMany(mappedBy = "spesialisasi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<SpesialisasiDokterModel> listSpesialisasiDokter;
 
     public Long getId() {
         return id;
