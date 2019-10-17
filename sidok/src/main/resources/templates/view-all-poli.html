@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container-fluid">
+    <h2 style="text-align: center;">Sistem Informasi Dokter</h2>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <div class="card-header bg-dark text-white">Daftar Poli</div>
+                <div class="card-body"></div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Lokasi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="poli, iterationStatus : *{listPoli}">
+                        <th th:text="${iterationStatus.count}"></th>
+                        <td th:text="${poli.nama}"></td>
+                        <td th:text="${poli.lokasi}"></td>
+                        <td>
+                            <button class="btn btn-dark">ubah</button>
+                            <button class="btn btn-danger">hapus</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form th:action="@{/poli/tambah}" method="GET">
+                    <button class="btn btn-dark" type="submit">Tambah Poli</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

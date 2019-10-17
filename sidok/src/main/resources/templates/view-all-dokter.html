@@ -26,13 +26,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>aaaa</td>
-                        <td>bbbb</td>
+                    <tr th:each="dokter, iterationStatus : *{listDokter}">
+                        <th th:text="${iterationStatus.count}"></th>
+                        <td><a th:href="@{/}" th:text="${dokter.nama}"></a></td>
+                        <td th:text="${dokter.nip}"></td>
+                        <td th:text="${dokter.nik}"></td>
+                        <td th:if="${dokter.jenis_kelamin} == 1">Laki-laki</td>
+                        <td th:unless="${dokter.jenis_kelamin} == 1">Perempuan</td>
+                        <td th:text="${dokter.listSpesialisasiDokter}"></td>
                         <td>
                             <button class="btn btn-primary">tambah jadwal</button>
                             <button class="btn btn-dark">ubah</button>

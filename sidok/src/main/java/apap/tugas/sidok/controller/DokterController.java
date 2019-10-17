@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -37,5 +38,15 @@ public class DokterController {
         model.addAttribute("nama", dokter.getNama());
         model.addAttribute("nip", dokter.getNip());
         return "submit-add-dokter";
+    }
+
+    @RequestMapping(path = "/dokter", method = RequestMethod.GET)
+    public String viewDokterByNik(
+            @RequestParam(value = "nik") String nik, Model model
+    ) {
+        DokterModel dokter = dokterService.getDokterByNik(nik).get();
+        model.addAttribute("dokter", dokter);
+        model.addAttribute("pagetitle", "View Dokter");
+        return "view-dokter-by-nik";
     }
 }

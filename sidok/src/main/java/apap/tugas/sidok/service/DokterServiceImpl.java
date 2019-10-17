@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.time.Year;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @Transactional
@@ -62,5 +59,10 @@ public class DokterServiceImpl implements DokterService {
         String nip = currentYear + tanggalLahir + jenisKelamin + randomCapitalLetter;
 
         return nip;
+    }
+
+    @Override
+    public Optional<DokterModel> getDokterByNik(String nik) {
+        return dokterDb.findByNik(nik);
     }
 }

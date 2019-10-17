@@ -18,6 +18,7 @@ public class HomeController {
     public String viewAllDokter(Model model) {
         List<DokterModel> listDokter = dokterService.getDokterList();
         model.addAttribute("pagetitle", "View All Dokter");
+        model.addAttribute("listDokter", listDokter);
         return "view-all-dokter";
     }
 }
