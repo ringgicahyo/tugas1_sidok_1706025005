@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <br>
+    <div class="card" style="width: 25rem; margin: 0 auto; float: none;">
+        <div class="card-header">
+            <h2>Detail Dokter</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-text" th:text="'Nama: ' + ${dokter.nama}"></p>
+            <p class="card-text" th:text="'NIP: ' + ${dokter.nip}"></p>
+            <p class="card-text" th:text="'NIK: ' + ${dokter.nik}"></p>
+            <p class="card-text" th:text="'Tempat Lahir: ' + ${dokter.tempat_lahir}"></p>
+            <p class="card-text" th:text="'Tanggal Lahir: ' + ${#dates.format(dokter.tanggal_lahir, 'yyyy-MM-dd')}"></p>
+            <p class="card-text" th:if="${dokter.jenis_kelamin} == 1">Laki-laki</p>
+            <p class="card-text" th:unless="${dokter.jenis_kelamin} == 1">Perempuan</p>
+            <p class="card-text" th:text="Spesialisasi"></p>
+            <ul>
+                <div th:each="spesialisasi, iterationStatus : *{dokter.listSpesialisasiDokter}">
+                    <li th:text="${spesialisasi.spesialisasi.nama}"></li>
+                </div>
+            </ul>
+            <button class="btn btn-danger" style="float: right">hapus</button>
+            <form th:action="@{/dokter/update/{id}(id=${dokter.id})}">
+                <button class="btn btn-dark" style="float:right; margin-right: 5px;">ubah</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

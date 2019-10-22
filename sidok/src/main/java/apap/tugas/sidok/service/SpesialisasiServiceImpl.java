@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -22,5 +23,10 @@ public class SpesialisasiServiceImpl implements SpesialisasiService {
     @Override
     public List<SpesialisasiModel> getSpesialisasiList() {
         return spesialisasiDb.findAll();
+    }
+
+    @Override
+    public Optional<SpesialisasiModel> getSpesialisasiById(Long id) {
+        return Optional.of(spesialisasiDb.getOne(id));
     }
 }

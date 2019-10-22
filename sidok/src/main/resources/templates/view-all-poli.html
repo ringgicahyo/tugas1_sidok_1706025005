@@ -7,8 +7,8 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div class="container-fluid">
-    <h2 style="text-align: center;">Sistem Informasi Dokter</h2>
+<div class="container-fluid" style="float: none; margin-top: 20px; margin-bottom: 20px;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Sistem Informasi Dokter</h2>
     <div class="row">
         <div class="container">
             <div class="card">
@@ -35,7 +35,7 @@
                     </tbody>
                 </table>
                 <form th:action="@{/poli/tambah}" method="GET">
-                    <button class="btn btn-dark" type="submit">Tambah Poli</button>
+                    <button class="btn btn-dark" type="submit" style="float: right; margin-bottom: 10px; margin-right: 20px;">Tambah Poli</button>
                 </form>
             </div>
         </div>

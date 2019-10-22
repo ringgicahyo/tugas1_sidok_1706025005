@@ -2,6 +2,7 @@ package apap.tugas.sidok.service;
 
 import apap.tugas.sidok.model.DokterModel;
 import apap.tugas.sidok.model.SpesialisasiDokterModel;
+import apap.tugas.sidok.model.SpesialisasiModel;
 import apap.tugas.sidok.repository.DokterDb;
 import apap.tugas.sidok.repository.JadwalJagaDb;
 import apap.tugas.sidok.repository.SpesialisasiDokterDb;
@@ -65,4 +66,27 @@ public class DokterServiceImpl implements DokterService {
     public Optional<DokterModel> getDokterByNik(String nik) {
         return dokterDb.findByNik(nik);
     }
+
+    @Override
+    public DokterModel updateDokter(DokterModel dokterModel) {
+        DokterModel targetDokter = dokterDb.findById(dokterModel.getId()).get();
+
+        try {
+            targetDokter.setNama(dokterModel.getNama());
+            targetDokter.setTanggal_lahir(dokterModel.getTanggal_lahir());
+            targetDokter.setTempat_lahir(dokterModel.getTempat_lahir());
+            targetDokter.setJenis_kelamin(dokterModel.getJenis_kelamin());
+            targetDokter.setNip(generateNIP(targetDokter));
+            return targetDokter;
+        } catch (NullPointerException nullException) {
+            return null;
+        }
+    }
+
+    @Override
+    public Optional<DokterModel> getDokterById(Long id) {
+        return dokterDb.findById(id);
+    }
+
+
 }

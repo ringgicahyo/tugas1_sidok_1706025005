@@ -12,5 +12,6 @@ public interface DokterService {
     List<DokterModel> getDokterList();
     String generateNIP(DokterModel dokter);
     Optional<DokterModel> getDokterByNik(String nik);
-
+    DokterModel updateDokter(DokterModel dokterModel);
+    Optional<DokterModel> getDokterById(Long id);
 }
