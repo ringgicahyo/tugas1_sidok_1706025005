@@ -79,4 +79,14 @@ public class DokterController {
         return "submit-update-dokter";
     }
 
+    @RequestMapping(value = "dokter/delete/{id}")
+    public String deleteDokter(@PathVariable(value = "id") Long id, Model model) {
+        DokterModel dokter = dokterService.getDokterById(id).get();
+        if (dokter == null) return "error-id-not-found";
+        dokterService.deleteDokter(dokter);
+        model.addAttribute("nama", dokter.getNama());
+        model.addAttribute("pagetitle", "Delete Dokter");
+        return "delete-dokter";
+    }
+
 }

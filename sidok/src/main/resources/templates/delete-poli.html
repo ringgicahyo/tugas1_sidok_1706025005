@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
     <nav th:replace="fragments/fragment :: navbar"></nav>
-    <h2 th:text="'Data dokter dengan NIK ' + ${dokter.nik} + ' berhasil diubah'"></h2>
+    <h2 th:text="'Poli dengan nama ' + ${nama} + ' berhasil dihapus dari daftar'"></h2>
     <br>
     <a th:href="@{/}">Kembali ke Home</a>
-<!--    <h4>Redirecting in 3 seconds...</h4>-->
 </body>
 </html>
