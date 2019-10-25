@@ -14,5 +14,4 @@ public interface DokterService {
     Optional<DokterModel> getDokterByNik(String nik);
     DokterModel updateDokter(DokterModel dokterModel);
     Optional<DokterModel> getDokterById(Long id);
-    void deleteDokter(DokterModel dokter);
 }

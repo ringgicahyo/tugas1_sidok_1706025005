@@ -88,11 +88,5 @@ public class DokterServiceImpl implements DokterService {
         return dokterDb.findById(id);
     }
 
-    @Override
-    public void deleteDokter(DokterModel dokter) {
-        DokterModel targetDokter = dokterDb.findById(dokter.getId()).get();
-        dokterDb.delete(targetDokter);
-    }
-
 
 }

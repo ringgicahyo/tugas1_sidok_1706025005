@@ -26,9 +26,7 @@
                     <li th:text="${spesialisasi.spesialisasi.nama}"></li>
                 </div>
             </ul>
-            <form th:action="@{/dokter/delete/{id}(id=${dokter.id})}" th:object="${dokter}" method="POST">
-                <button class="btn btn-danger" style="float: right">hapus</button>
-            </form>
+            <button class="btn btn-danger" style="float: right">hapus</button>
             <form th:action="@{/dokter/update/{id}(id=${dokter.id})}">
                 <button class="btn btn-dark" style="float:right; margin-right: 5px;">ubah</button>
             </form>

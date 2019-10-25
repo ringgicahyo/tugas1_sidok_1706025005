@@ -41,11 +41,9 @@
                         <td>
                             <button class="btn btn-primary">tambah jadwal</button>
                             <form th:action="@{/dokter/update/{id}(id=${dokter.id})}">
-                                <button class="btn btn-dark" type="submit">ubah</button>
+                                <button class="btn btn-dark">ubah</button>
                             </form>
-                            <form th:action="@{/dokter/delete/{id}(id=${dokter.id})}" th:object="${dokter}" method="POST">
-                                <button class="btn btn-danger" type="submit">hapus</button>
-                            </form>
+                            <button class="btn btn-danger">hapus</button>
                         </td>
                     </tr>
                     </tbody>

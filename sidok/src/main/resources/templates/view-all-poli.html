@@ -25,16 +25,11 @@
                     <tbody>
                     <tr th:each="poli, iterationStatus : *{listPoli}">
                         <th th:text="${iterationStatus.count}"></th>
-                        <td><a th:href="@{/poli/view/{id}(id=${poli.id})}" th:text="${poli.nama}"></a></td>
-<!--                        <td th:text="${poli.nama}"></td>-->
+                        <td th:text="${poli.nama}"></td>
                         <td th:text="${poli.lokasi}"></td>
                         <td>
-                            <form th:action="@{/poli/update/{id}(id=${poli.id})}">
-                                <button class="btn btn-dark" type="submit">ubah</button>
-                            </form>
-                            <form th:action="@{/poli/delete/{id}(id=${poli.id})}" th:object="${poli}" method="POST">
-                                <button class="btn btn-danger" type="submit">hapus</button>
-                            </form>
+                            <button class="btn btn-dark">ubah</button>
+                            <button class="btn btn-danger">hapus</button>
                         </td>
                     </tr>
                     </tbody>
