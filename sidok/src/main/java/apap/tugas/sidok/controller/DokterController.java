@@ -40,7 +40,9 @@ public class DokterController {
         dokter.setListSpesialisasiDokter(null);
         dokterService.addDokter(dokter);
         for (SpesialisasiDokterModel spesialisasi: listSpesialisasiDokter) {
-            if (spesialisasi.getSpesialisasi().getId() == 0) continue;
+            if (spesialisasi.getSpesialisasi().getId() == 0) {
+                continue;
+            }
             SpesialisasiDokterModel spesialisasiDokterModel = new SpesialisasiDokterModel();
             spesialisasiDokterModel.setDokter(dokter);
             spesialisasiDokterModel.setSpesialisasi(spesialisasiService.getSpesialisasiById(spesialisasi.getSpesialisasi().getId()).get());
