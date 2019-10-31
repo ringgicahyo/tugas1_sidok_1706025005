@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container-fluid">
+<h3>Tambah Dokter</h3>
+
+<form th:action="@{/dokter/tambah}" th:object="${dokter}" method="POST">
+    <div class="form-group row">
+        <label for="namaDokter" class="col-sm-2 col-form-label">Nama</label>
+        <div class="col-sm-2">
+            <input th:type="text" class="form-control" id="namaDokter" placeholder="Nama" name="nama">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nikDokter" class="col-sm-2 col-form-label">NIK</label>
+        <div class="col-sm-2">
+            <input th:type="text" class="form-control" id="nikDokter" placeholder="NIK" name="nik">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="tanggalLahirDokter" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+        <div class="col-sm-2">
+            <input th:type="date" class="form-control" id="tanggalLahirDokter" name="tanggal_lahir">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="tempatLahirDokter" class="col-sm-2 col-form-label">Tempat Lahir</label>
+        <div class="col-sm-2">
+            <input th:type="text" class="form-control" id="tempatLahirDokter" placeholder="Tempat Lahir" name="tempat_lahir">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="jenisKelaminDokter" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+        <div class="col-sm-2">
+            <select th:field="*{jenis_kelamin}" id="jenisKelaminDokter">
+                <option th:value="1" th:text="Laki-laki"></option>
+                <option th:value="2" th:text="Perempuan"></option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="spesialisasiDokter" class="col-sm-2 col-form-label">Spesialisasi</label>
+        <div class="col-sm-2">
+            <select th:field="*{listSpesialisasiDokter}" id="spesialisasiDokter">
+                <option th:each="spesialisasi : ${listSpesialisasi}" th:value="${spesialisasi.id}" th:text="${spesialisasi.nama}">
+                </option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+</form>
+</div>
+</body>
+</html>

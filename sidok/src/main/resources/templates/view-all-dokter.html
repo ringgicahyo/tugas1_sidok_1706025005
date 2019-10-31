@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container-fluid" style="float: none; margin-top: 20px; margin-bottom: 20px;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Sistem Informasi Dokter</h2>
+        <div class="row">
+            <div class="container">
+            <div class="card">
+                <div class="card-header bg-dark text-white">Daftar Dokter</div>
+                <div class="card-body"></div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">NIP</th>
+                        <th scope="col">NIK</th>
+                        <th scope="col">Jenis Kelamin</th>
+                        <th scope="col">Spesialisasi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dokter, iterationStatus : *{listDokter}">
+                        <th th:text="${iterationStatus.count}"></th>
+                        <td><a th:href="@{/dokter?nikDokter=} + ${dokter.nik}" th:text="${dokter.nama}"></a></td>
+                        <td th:text="${dokter.nip}"></td>
+                        <td th:text="${dokter.nik}"></td>
+                        <td th:if="${dokter.jenis_kelamin} == 1">Laki-laki</td>
+                        <td th:unless="${dokter.jenis_kelamin} == 1">Perempuan</td>
+                        <td>
+                            <div th:each="spesialisasi, iterationStatus : *{dokter.listSpesialisasiDokter}">
+                                <p th:text="${spesialisasi.spesialisasi.nama}"></p>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary">tambah jadwal</button>
+                            <form th:action="@{/dokter/update/{id}(id=${dokter.id})}">
+                                <button class="btn btn-dark" type="submit">ubah</button>
+                            </form>
+                            <form th:action="@{/dokter/delete/{id}(id=${dokter.id})}" th:object="${dokter}" method="POST">
+                                <button class="btn btn-danger" type="submit">hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <form th:action="@{/dokter/tambah}" method="GET">
+                    <button class="btn btn-dark" type="submit" style="float: right; margin-bottom: 10px; margin-right: 20px;">Tambah Dokter</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
