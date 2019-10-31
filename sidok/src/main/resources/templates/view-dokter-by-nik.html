@@ -18,8 +18,8 @@
             <p class="card-text" th:text="'NIK: ' + ${dokter.nik}"></p>
             <p class="card-text" th:text="'Tempat Lahir: ' + ${dokter.tempat_lahir}"></p>
             <p class="card-text" th:text="'Tanggal Lahir: ' + ${#dates.format(dokter.tanggal_lahir, 'yyyy-MM-dd')}"></p>
-            <p class="card-text" th:if="${dokter.jenis_kelamin} == 1">Laki-laki</p>
-            <p class="card-text" th:unless="${dokter.jenis_kelamin} == 1">Perempuan</p>
+            <p class="card-text" th:if="${dokter.jenis_kelamin} == 1">Jenis Kelamin: Laki-laki</p>
+            <p class="card-text" th:unless="${dokter.jenis_kelamin} == 1">Jenis Kelamin: Perempuan</p>
             <p class="card-text" th:text="Spesialisasi"></p>
             <ul>
                 <div th:each="spesialisasi, iterationStatus : *{dokter.listSpesialisasiDokter}">
@@ -34,5 +34,8 @@
             </form>
         </div>
     </div>
+    <center>
+        <a th:href="@{/}">Kembali ke Home</a>
+    </center>
 </body>
 </html>

@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 20px;">
     <h3>Ubah Poli</h3>
 
     <form th:action="@{/poli/update/{id}(id=${poli.id})}" th:object="${poli}" method="POST">

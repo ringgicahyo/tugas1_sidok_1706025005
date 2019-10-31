@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 20px;">
     <h3>Ubah Dokter</h3>
 
     <form th:action="@{/dokter/update/{id}(id=${dokter.id})}" th:object="${dokter}" method="POST">
@@ -38,7 +38,7 @@
         <div class="form-group row">
             <label for="jenisKelaminDokter" class="col-sm-2 col-form-label">Jenis Kelamin</label>
             <div class="col-sm-2">
-                <select th:field="*{jenis_kelamin}" id="jenisKelaminDokter" th:value="${dokter.jenis_kelamin}">
+                <select th:field="*{jenis_kelamin}" id="jenisKelaminDokter" th:value="${dokter.jenis_kelamin}" class="form-control">
                     <option th:value="1" th:text="Laki-laki"></option>
                     <option th:value="2" th:text="Perempuan"></option>
                 </select>

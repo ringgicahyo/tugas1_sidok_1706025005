@@ -12,37 +12,28 @@
     <div class="row">
         <div class="container">
             <div class="card">
-                <div class="card-header bg-dark text-white">Daftar Poli</div>
+                <div class="card-header bg-dark text-white" th:text="'Daftar Dokter yang Bertugas di ' + ${poli.nama}"></div>
                 <div class="card-body"></div>
                 <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Lokasi</th>
+                        <th scope="col">Nama Dokter</th>
+                        <th scope="col">Spesialisasi</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="poli, iterationStatus : *{listPoli}">
+                    <tr th:each="dokter, iterationStatus : ${unique}">
                         <td th:text="${iterationStatus.count}"></td>
-                        <td><a th:href="@{/poli/dokter/{id}(id=${poli.id})}" th:text="${poli.nama}"></a></td>
-                        <td th:text="${poli.lokasi}"></td>
+                        <td th:text="${dokter.nama}"></td>
                         <td>
-                            <form th:action="@{/poli/update/{id}(id=${poli.id})}">
-                                <button class="btn btn-dark" type="submit">ubah</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form th:action="@{/poli/delete/{id}(id=${poli.id})}" th:object="${poli}" method="POST">
-                                <button class="btn btn-danger" type="submit">hapus</button>
-                            </form>
+                            <div th:each="spesialisasi : ${dokter.listSpesialisasiDokter}">
+                                <p th:text="${spesialisasi.spesialisasi.nama}"></p>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-                <form th:action="@{/poli/tambah}" method="GET">
-                    <button class="btn btn-dark" type="submit" style="float: right; margin-bottom: 10px; margin-right: 20px;">Tambah Poli</button>
-                </form>
             </div>
         </div>
     </div>

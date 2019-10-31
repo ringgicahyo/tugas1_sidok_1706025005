@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface SpesialisasiService {
     void addSpesialisasi(SpesialisasiModel spesialisasi);
     List<SpesialisasiModel> getSpesialisasiList();
-    Optional<SpesialisasiModel> getSpesialisasiById(Long id);
+    SpesialisasiModel getSpesialisasiById(Long id);
 }

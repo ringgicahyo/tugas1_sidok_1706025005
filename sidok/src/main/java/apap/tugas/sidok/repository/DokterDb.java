@@ -12,4 +12,5 @@ public interface DokterDb extends JpaRepository<DokterModel, Long> {
     Optional<DokterModel> findById(Long id);
     List<DokterModel> findAll();
     Optional<DokterModel> findByNik(String nik);
+    Optional<DokterModel> findByNip(String nip);
 }

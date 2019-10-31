@@ -1,6 +1,7 @@
 package apap.tugas.sidok.service;
 
 import apap.tugas.sidok.model.JadwalJagaModel;
+import apap.tugas.sidok.model.PoliModel;
 import apap.tugas.sidok.repository.JadwalJagaDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,10 @@ public class JadwalJagaServiceImpl implements JadwalJagaService {
     @Override
     public List<JadwalJagaModel> getJadwalJagaList() {
         return jadwalJagaDb.findAll();
+    }
+
+    @Override
+    public List<JadwalJagaModel> getJadwalJagaByPoli(PoliModel poli) {
+        return jadwalJagaDb.findByPoli(poli);
     }
 }

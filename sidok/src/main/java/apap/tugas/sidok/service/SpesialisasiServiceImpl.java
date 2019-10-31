@@ -26,7 +26,7 @@ public class SpesialisasiServiceImpl implements SpesialisasiService {
     }
 
     @Override
-    public Optional<SpesialisasiModel> getSpesialisasiById(Long id) {
-        return Optional.of(spesialisasiDb.getOne(id));
+    public SpesialisasiModel getSpesialisasiById(Long id) {
+        return spesialisasiDb.getOne(id);
     }
 }

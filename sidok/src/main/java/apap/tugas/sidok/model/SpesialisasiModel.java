@@ -23,6 +23,14 @@ public class SpesialisasiModel implements Serializable {
     @Column(name = "gelar", nullable = false, columnDefinition = "VARCHAR(255)")
     private String gelar;
 
+    public List<SpesialisasiDokterModel> getListSpesialisasiDokter() {
+        return listSpesialisasiDokter;
+    }
+
+    public void setListSpesialisasiDokter(List<SpesialisasiDokterModel> listSpesialisasiDokter) {
+        this.listSpesialisasiDokter = listSpesialisasiDokter;
+    }
+
     @OneToMany(mappedBy = "spesialisasi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<SpesialisasiDokterModel> listSpesialisasiDokter;
 
