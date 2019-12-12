@@ -1,18 +1,31 @@
 package apap.tugas.sidok.controller;
 
+import apap.tugas.sidok.model.DokterModel;
+import apap.tugas.sidok.model.JadwalJagaModel;
 import apap.tugas.sidok.model.PoliModel;
+import apap.tugas.sidok.service.DokterService;
+import apap.tugas.sidok.service.JadwalJagaService;
 import apap.tugas.sidok.service.PoliService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PoliController {
     @Autowired
     private PoliService poliService;
+
+    @Autowired
+    JadwalJagaService jadwalJagaService;
+
+    @Autowired
+    DokterService dokterService;
 
     @RequestMapping("/poli")
     public String viewAllPoli(Model model) {
@@ -71,5 +84,25 @@ public class PoliController {
         model.addAttribute("nama", poli.getNama());
         model.addAttribute("pagetitle", "Delete Poli");
         return "delete-poli";
+    }
+
+    @RequestMapping(path = "/poli/dokter/{id}", method = RequestMethod.GET)
+    public String viewListDokterByIdPoli(@PathVariable Long id, Model model) {
+        List<JadwalJagaModel> listJadwalJaga = jadwalJagaService.getJadwalJagaList();
+        PoliModel poli = poliService.getPoliById(id).get();
+        List<DokterModel> listDokterByPoli = new ArrayList<>();
+        List<JadwalJagaModel> listJadwalJagaByPoli = jadwalJagaService.getJadwalJagaByPoli(poli);
+        for (JadwalJagaModel jadwalJaga : listJadwalJagaByPoli){
+            DokterModel dokterModel = jadwalJaga.getDokter();
+            listDokterByPoli.add(dokterModel);
+        }
+        Set<DokterModel> unique = new HashSet<>(listDokterByPoli);
+        unique.addAll(listDokterByPoli);
+
+        model.addAttribute("unique", unique);
+        model.addAttribute("listJadwalJaga", listJadwalJaga);
+        model.addAttribute("poli", poli);
+        model.addAttribute("pagetitle", "View List Dokter by Poli");
+        return "view-list-dokter-by-id-poli";
     }
 }

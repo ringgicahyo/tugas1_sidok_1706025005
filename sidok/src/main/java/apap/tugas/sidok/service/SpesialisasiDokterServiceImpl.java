@@ -1,6 +1,7 @@
 package apap.tugas.sidok.service;
 
 import apap.tugas.sidok.model.SpesialisasiDokterModel;
+import apap.tugas.sidok.model.SpesialisasiModel;
 import apap.tugas.sidok.repository.SpesialisasiDokterDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,10 @@ public class SpesialisasiDokterServiceImpl implements SpesialisasiDokterService 
     @Override
     public List<SpesialisasiDokterModel> getSpesialisasiDokterList() {
         return spesialisasiDokterDb.findAll();
+    }
+
+    @Override
+    public List<SpesialisasiDokterModel> getDokterBySpesialisasi(SpesialisasiModel spesialisasi) {
+        return spesialisasiDokterDb.findBySpesialisasi(spesialisasi);
     }
 }

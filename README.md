@@ -8,5 +8,5 @@ meningkat. Sistem Informasi Dokter (SIDOK) dikembangkan dengan berbasis website.
 https://github.com/ringgicahyo/tugas1_sidok_1706025005
 
 ## Contributor
-**Ringgi Cahyo Dwiputra** - *1706025005* - *B*
+**Ringgi Cahyo Dwiputra** - *1706025005* - *C*
 

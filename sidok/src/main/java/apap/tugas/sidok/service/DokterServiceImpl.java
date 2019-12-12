@@ -20,12 +20,6 @@ public class DokterServiceImpl implements DokterService {
     @Autowired
     private DokterDb dokterDb;
 
-    @Autowired
-    private JadwalJagaDb jadwalJagaDb;
-
-    @Autowired
-    private SpesialisasiDokterDb spesialisasiDokterDb;
-
     @Override
     public void addDokter(DokterModel dokter) {
         String nip = generateNIP(dokter);
@@ -92,6 +86,11 @@ public class DokterServiceImpl implements DokterService {
     public void deleteDokter(DokterModel dokter) {
         DokterModel targetDokter = dokterDb.findById(dokter.getId()).get();
         dokterDb.delete(targetDokter);
+    }
+
+    @Override
+    public Optional<DokterModel> getDokterByNip(String nip) {
+        return dokterDb.findByNip(nip);
     }
 
 

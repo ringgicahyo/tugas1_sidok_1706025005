@@ -1,14 +1,16 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <object th:include="fragments/fragment :: title" th:remove="tag"></object>-->
-<!--    <object th:include="fragments/fragment :: css" th:remove="tag"></object>-->
-<!--    <object th:include="fragments/fragment :: js" th:remove="tag"></object>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <nav th:replace="fragments/fragment :: navbar"></nav>-->
-<!--&lt;!&ndash;    <h2 th:text="'Dokter ' + ${nama} + ' dengan NIP ' + ${nip} + ' berhasil ditambahkan'"></h2>&ndash;&gt;-->
-<!--    <br>-->
-<!--    <a th:href="@{/}">Kembali ke Home</a>-->
-<!--</body>-->
-<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <object th:include="fragments/fragment :: title" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+    <div class="container-fluid" style="margin-top: 20px;">
+        <h2 th:text="'Jadwal jaga untuk dokter dengan nama ' + ${jadwalJaga.dokter.nama} + ' berhasil ditambahkan'"></h2>
+        <br>
+        <a th:href="@{/}">Kembali ke Home</a>
+    </div>
+</body>
+</html>
